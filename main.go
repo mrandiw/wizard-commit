@@ -20,9 +20,11 @@ func main() {
 	noConfirm := flag.Bool("y", false, "Skip confirmation prompt")
 	saveConfig := flag.Bool("save-config", false, "Save current settings to config file")
 	ollamaURL := flag.String("url", config.OllamaAPIURL, "Ollama API URL")
-	provider := flag.String("provider", config.Provider, "API type to use (ollama or gemini)")
+	provider := flag.String("provider", config.Provider, "API type to use (ollama, gemini, or deepseek)")
 	geminiKey := flag.String("gemini-key", config.GeminiAPIKey, "Gemini API key")
 	geminiURL := flag.String("gemini-url", config.GeminiAPIURL, "Gemini API URL")
+	deepseekKey := flag.String("deepseek-key", config.DeepSeekAPIKey, "DeepSeek API key")
+	deepseekURL := flag.String("deepseek-url", config.DeepSeekAPIURL, "DeepSeek API URL")
 	flag.Parse()
 
 	// Save configuration if requested
@@ -32,6 +34,8 @@ func main() {
 		config.Provider = *provider
 		config.GeminiAPIKey = *geminiKey
 		config.GeminiAPIURL = *geminiURL
+		config.DeepSeekAPIKey = *deepseekKey
+		config.DeepSeekAPIURL = *deepseekURL
 
 		// Convert config to JSON
 		configJSON, err := json.MarshalIndent(config, "", "  ")
@@ -61,10 +65,17 @@ func main() {
 	config.Provider = *provider
 	config.GeminiAPIKey = *geminiKey
 	config.GeminiAPIURL = *geminiURL
+	config.DeepSeekAPIKey = *deepseekKey
+	config.DeepSeekAPIURL = *deepseekURL
 
 	// Validate API configuration
 	if config.Provider == "gemini" && config.GeminiAPIKey == "" {
 		fmt.Fprintf(os.Stderr, "Error: Gemini API requires an API key. Use --gemini-key or save it in the configuration.\n")
+		os.Exit(1)
+	}
+
+	if config.Provider == "deepseek" && config.DeepSeekAPIKey == "" {
+		fmt.Fprintf(os.Stderr, "Error: DeepSeek API requires an API key. Use --deepseek-key or save it in the configuration.\n")
 		os.Exit(1)
 	}
 

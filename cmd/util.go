@@ -11,20 +11,24 @@ type Config struct {
 	OllamaAPIURL   string `json:"ollamaApiUrl"`
 	DefaultModel   string `json:"defaultModel"`
 	PromptTemplate string `json:"promptTemplate"`
-	Provider       string `json:"provider"` // "ollama" or "gemini"
+	Provider       string `json:"provider"` // "ollama", "gemini", or "deepseek"
 	GeminiAPIURL   string `json:"geminiApiUrl"`
 	GeminiAPIKey   string `json:"geminiApiKey"`
+	DeepSeekAPIURL string `json:"deepseekApiUrl"`
+	DeepSeekAPIKey string `json:"deepseekApiKey"`
 }
 
 // LoadConfig loads configuration from file or returns defaults
 func LoadConfig() Config {
 	// Default configuration
 	defaultConfig := Config{
-		OllamaAPIURL: "http://localhost:11434/api/generate",
-		DefaultModel: "gemma3:1b",
-		Provider:     "ollama", // Default to Ollama
-		GeminiAPIURL: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent",
-		GeminiAPIKey: "",
+		OllamaAPIURL:   "http://localhost:11434/api/generate",
+		DefaultModel:   "gemma3:1b",
+		Provider:       "ollama", // Default to Ollama
+		GeminiAPIURL:   "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent",
+		GeminiAPIKey:   "",
+		DeepSeekAPIURL: "https://api.deepseek.com/chat/completions",
+		DeepSeekAPIKey: "",
 		PromptTemplate: `Generate a concise and descriptive git commit message based on the following changes.
 Follow best practices for git commit messages: use imperative mood, keep it under 50 characters for the first line,
 and add more details in a body if necessary. 
@@ -71,6 +75,12 @@ Changes:
 			}
 			if config.GeminiAPIKey != "" {
 				defaultConfig.GeminiAPIKey = config.GeminiAPIKey
+			}
+			if config.DeepSeekAPIURL != "" {
+				defaultConfig.DeepSeekAPIURL = config.DeepSeekAPIURL
+			}
+			if config.DeepSeekAPIKey != "" {
+				defaultConfig.DeepSeekAPIKey = config.DeepSeekAPIKey
 			}
 		}
 	}
