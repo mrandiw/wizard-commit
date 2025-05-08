@@ -1,3 +1,4 @@
+![wizard commit](https://github.com/user-attachments/assets/2ee705de-714c-4d8f-823e-4a6108319cbe)
 
 A flexible CLI tool that uses various AI models (Ollama, Gemini, Deepseek, OpenAI, Claude, Grox) to automatically generate git commit messages based on your changes.
 
