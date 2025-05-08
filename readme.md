@@ -1,6 +1,6 @@
 ## Wizard Commit
 
-A flexible CLI tool that uses various AI models (Ollama, Gemini, Deepseek, OpenAI, Claude, Grox) to automatically generate git commit messages based on your changes.
+A flexible CLI tool that uses various AI models (Ollama, Gemini, Deepseek, OpenAI, Claude, Groq) to automatically generate git commit messages based on your changes.
 
 ## Features
 
