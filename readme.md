@@ -7,6 +7,7 @@ A flexible CLI tool that uses various AI models (Ollama, Gemini, Deepseek, OpenA
 - Support for multiple AI providers:
   - Ollama (local AI models)
   - Gemini (Google's API)
+  - Deepseek (Deepseek API)
 - Customizable prompt templates
 - Confirmation before committing
 - Configuration file for persistent settings
@@ -101,7 +102,10 @@ Use specific AI provider:
 wizard-commit -provider ollama -model llama3
 
 # Use Gemini
-wizard-commit -provider gemini -api-key YOUR_API_KEY
+wizard-commit -provider gemini -gemini-key YOUR_API_KEY
+
+# Use Deepseek
+wizard-commit -provider deepseek -deepseek-key YOUR_API_KEY -model deepseek-chat
 ```
 
 ## Configuration
@@ -118,7 +122,10 @@ You can create a configuration file manually or use the `-save-config` flag to s
 wizard-commit -provider ollama -model codellama -save-config
 
 # Or save Gemini configuration
-wizard-commit -provider gemini -api-key YOUR_API_KEY -save-config
+wizard-commit -provider gemini -gemini-key YOUR_API_KEY -save-config
+
+# Deepseek
+wizard-commit -provider deepseek -deepseek-key YOUR_API_KEY -model deepseek-chat -save-config
 ```
 
 ### Configuration File Format
@@ -131,6 +138,8 @@ The configuration file is in JSON format:
   "ollamaApiUrl": "http://localhost:11434/api/generate",
   "geminiApiUrl": "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent",
   "geminiApiKey": "your-api-key-here",
+  "deepseekApiUrl" : "https://api.deepseek.com/chat/completions",
+  "deepseekApiKey" : "your-api-key-here",
   "defaultModel": "llama3",
   "promptTemplate": "Generate a concise and descriptive git commit message based on the following changes.\nFollow best practices for git commit messages: use imperative mood, keep it under 50 characters for the first line,\nand add more details in a body if necessary.\n\nRespond ONLY with the commit message, no other text, explanation, or quotes.\nJust the commit message that would be used with 'git commit -m'.\n\nChanges:\n%s"
 }
@@ -156,7 +165,12 @@ Ollama needs to be running on your machine. By default, the tool connects to htt
 
 ### Gemini
 
-You'll need a Gemini API key from Google. You can provide it either through the `-api-key` flag or by storing it in your configuration file.
+You'll need a Gemini API key from Google. You can provide it either through the `-gemini-key` flag or by storing it in your configuration file.
+
+### Deepseek
+
+You'll need a Deepseek API key from Deepseek. You can provide it either through the `-deepseek-key` flag or by storing it in your configuration file.
+
 
 ## Example
 
@@ -179,7 +193,15 @@ Are you sure you want to use this commit message? (y/n): y
 Changes committed successfully!
 
 # Commit using Gemini
-$ wizard-commit -provider gemini -api-key YOUR_API_KEY -a -y
+$ wizard-commit -provider gemini -gemini-key YOUR_API_KEY -a -y
+Generated commit message:
+------------------------
+feat: implement user profile page with avatar upload
+------------------------
+Changes committed successfully!
+
+# Commit using Deepseek
+$ wizard-commit -provider deepseek -deepseek-key YOUR_API_KEY -model deepseek-chat -a -y
 Generated commit message:
 ------------------------
 feat: implement user profile page with avatar upload
