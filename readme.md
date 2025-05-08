@@ -1,3 +1,11 @@
+[![Go](https://img.shields.io/badge/Go-%2300ADD8.svg?&logo=go&logoColor=white)](#)
+[![ChatGPT](https://img.shields.io/badge/ChatGPT-74aa9c?logo=openai&logoColor=white)](#)
+[![Deepseek](https://custom-icon-badges.demolab.com/badge/Deepseek-4D6BFF?logo=deepseek&logoColor=fff)](#)
+[![Google Gemini](https://img.shields.io/badge/Google%20Gemini-886FBF?logo=googlegemini&logoColor=fff)](#)
+[![Claude](https://img.shields.io/badge/Claude-D97757?logo=claude&logoColor=fff)](#)
+[![LinkedIn](https://custom-icon-badges.demolab.com/badge/LinkedIn-0A66C2?logo=linkedin-white&logoColor=fff)](https://www.linkedin.com/in/mrandiw/)
+[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white)](https://www.youtube.com/@CodeWithAndiw)
+
 ## Wizard Commit
 
 A flexible CLI tool that uses various AI models (Ollama, Gemini, Deepseek, OpenAI, Claude, Groq) to automatically generate git commit messages based on your changes.
@@ -33,31 +41,20 @@ A flexible CLI tool that uses various AI models (Ollama, Gemini, Deepseek, OpenA
 
 2. Build the executable:
    ```bash
-   go build -o wizard-commit .
+   go build -o wizard-commit . (MacOS / Linux)
+   go build -o wizard-commit.exe . (Windows)
    ```
 
-3. Move the executable to your PATH:
+3. Move the executable & Config file to your Project Folder then run:
 
    **Linux/macOS**:
    ```bash
-   sudo mv wizard-commit /usr/local/bin/
-   # OR for a user-local installation
-   mkdir -p ~/bin
-   mv wizard-commit ~/bin/
-   # Make sure ~/bin is in your PATH
+   ./wizard-commit -a
    ```
 
    **Windows**:
-   ```powershell
-   # Create a directory for the executable (if it doesn't exist)
-   mkdir -p $env:USERPROFILE\bin
-
-   # Move the executable
-   move wizard-commit.exe $env:USERPROFILE\bin\
-
-   # Add to PATH (may need admin PowerShell)
-   $currentPath = [Environment]::GetEnvironmentVariable("Path", "User")
-   [Environment]::SetEnvironmentVariable("Path", $currentPath + ";$env:USERPROFILE\bin", "User")
+   ```bash
+   ./wizard-commit.exe -a
    ```
 
 ### Cross-Compilation
@@ -141,7 +138,7 @@ The configuration file is in JSON format:
   "deepseekApiUrl" : "https://api.deepseek.com/chat/completions",
   "deepseekApiKey" : "your-api-key-here",
   "defaultModel": "llama3",
-  "promptTemplate": "Generate a concise and descriptive git commit message based on the following changes.\nFollow best practices for git commit messages: use imperative mood, keep it under 50 characters for the first line,\nand add more details in a body if necessary.\n\nRespond ONLY with the commit message, no other text, explanation, or quotes.\nJust the commit message that would be used with 'git commit -m'.\n\nChanges:\n%s"
+  "promptTemplate": "Act as a software developer.\nGive commit message based on code changes no more than two sentenses. \n\nContex:\n%s"
 }
 ```
 
