@@ -1,4 +1,4 @@
-![wizard commit 2](https://github.com/user-attachments/assets/a0c5d4cd-b902-465f-8cfe-2761a26b7b50)
+## Wizard Commit
 
 A flexible CLI tool that uses various AI models (Ollama, Gemini, Deepseek, OpenAI, Claude, Grox) to automatically generate git commit messages based on your changes.
 
