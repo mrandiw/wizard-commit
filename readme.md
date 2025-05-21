@@ -31,6 +31,9 @@ A flexible CLI tool that uses various AI models (Ollama, Gemini, Deepseek, OpenA
 
 ## Installation
 
+### Download from Release Page
+https://github.com/mrandiw/wizard-commit/releases/download/v1.0.0/app.zip
+
 ### From Source
 
 1. Clone the repository:
