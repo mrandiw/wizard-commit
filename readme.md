@@ -63,10 +63,10 @@ You can build for different platforms from any OS:
 
 ```bash
 # Build for Linux
-GOOS=linux GOARCH=amd64 go build -o wizard-commit-linux .
+GOOS=linux GOARCH=amd64 go build -o wizard-commit .
 
 # Build for macOS 
-GOOS=darwin GOARCH=amd64 go build -o wizard-commit-macos .
+GOOS=darwin GOARCH=amd64 go build -o wizard-commit .
 
 # Build for Windows
 GOOS=windows GOARCH=amd64 go build -o wizard-commit.exe .
@@ -133,7 +133,7 @@ The configuration file is in JSON format:
 {
   "provider" : "gemini",
   "ollamaApiUrl": "http://localhost:11434/api/generate",
-  "geminiApiUrl": "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent",
+  "geminiApiUrl": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent",
   "geminiApiKey": "your-api-key-here",
   "deepseekApiUrl" : "https://api.deepseek.com/chat/completions",
   "deepseekApiKey" : "your-api-key-here",
