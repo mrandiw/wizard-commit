@@ -28,6 +28,7 @@ A flexible CLI tool that uses various AI models (Ollama, Gemini, Deepseek, OpenA
 - At least one of:
   - Ollama running locally (default: http://localhost:11434)
   - Gemini API key
+  - Deepseek API Key
 
 ## Installation
 
