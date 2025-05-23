@@ -1,0 +1,10 @@
+{
+  "ollamaApiUrl": "http://localhost:11434/api/generate",
+  "provider" : "deepseek",
+  "geminiApiUrl" : "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent",
+  "geminiApiKey" : "YOUR_API_KEY",
+  "deepseekApiUrl" : "https://api.deepseek.com/chat/completions",
+  "deepseekApiKey" : "YOUR_API_KEY",
+  "defaultModel": "deepseek-chat",
+  "promptTemplate": "Act as a software developer.\nGive commit message based on code changes no more than two sentenses. \n\nContex:\n%s"
+}
